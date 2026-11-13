@@ -1,0 +1,40 @@
+# Bilingual-pair consistency record for phase-0-acceptance.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/testpilot/phase-0/phase-0-acceptance.md
+/testpilot-phase-0-acceptance:
+  en: d29c1ef9d473ace9
+  zh: 266282f3cc24198a
+/testpilot-phase-0-acceptance/verdict:
+  en: ebbe8d5f61df18c9
+  zh: 61e0ac0fefaab819
+/testpilot-phase-0-acceptance/architecture-acceptance:
+  en: 38ca4f1a8fc1507d
+  zh: 7273ab161029be9c
+/testpilot-phase-0-acceptance/security-acceptance:
+  en: 3d5e754ce281e024
+  zh: d1cf322c2d3e8b4d
+/testpilot-phase-0-acceptance/engineering-acceptance:
+  en: bd936c94ac4dbc45
+  zh: 03852998a42d4fb8
+/testpilot-phase-0-acceptance/blocking-conditions:
+  en: a4cdb0f86375d981
+  zh: 7f48b10ba5c0d202
+/testpilot-phase-0-acceptance/the-one-decision-that-blocks-the-rest:
+  en: 758ee0805f14ce92
+  zh: 5d1ce4a6ea9038f0
+/testpilot-phase-0-acceptance/the-second-open-item-redirect-coverage:
+  en: d94c120abb8f2cd5
+  zh: 97a53ba22feeda4a
+/testpilot-phase-0-acceptance/the-third-open-item-repository-state:
+  en: 35dabba47792e242
+  zh: 735f0581606580c1
+/testpilot-phase-0-acceptance/phase-1-boundary:
+  en: 8a2adf3ac8fcf955
+  zh: fcbeaab553c56a9a
+/testpilot-phase-0-acceptance/audit-status-summary:
+  en: 1ba3d71ddfe7b46e
+  zh: 67d5f0d45714d67a
+/testpilot-phase-0-acceptance/further-exploration:
+  en: 23ec10668e68f7f0
+  zh: fddc91e6d0f3b978

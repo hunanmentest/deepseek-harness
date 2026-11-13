@@ -1,0 +1,55 @@
+# Bilingual-pair consistency record for architecture-decisions.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/testpilot/phase-0/architecture-decisions.md
+/testpilot-phase-0-architecture-decision-records:
+  en: 618841e734f49a33
+  zh: 6a36b5d6151970b2
+/testpilot-phase-0-architecture-decision-records/adr-001-package-group-and-release-strategy:
+  en: 737950e5e02b4270
+  zh: 2bff1429b3ca4b99
+/testpilot-phase-0-architecture-decision-records/adr-002-profile-and-bundle-assembly:
+  en: 9616c1af6db35363
+  zh: 96244cd989136d52
+/testpilot-phase-0-architecture-decision-records/adr-003-browser-provider-and-browser-adapter-boundary:
+  en: 38d64a1ffe29def9
+  zh: ba18f6b9d173dd9f
+/testpilot-phase-0-architecture-decision-records/adr-004-mcp-tools-and-deterministic-execution:
+  en: f71731c398dcf2f4
+  zh: 4fdff5de463d2cc2
+/testpilot-phase-0-architecture-decision-records/adr-005-agent-session-test-run-and-worker-lifetimes:
+  en: 67f7008b06e662a6
+  zh: eca3fd129eefc645
+/testpilot-phase-0-architecture-decision-records/adr-006-reuse-of-jobs-workflow-and-ptc:
+  en: 1a2f25ee12987526
+  zh: e68f8eae3f97b03d
+/testpilot-phase-0-architecture-decision-records/adr-007-data-persistence-and-migration:
+  en: 79f1824569094ac3
+  zh: 27d6c8d1f729e5a5
+/testpilot-phase-0-architecture-decision-records/adr-008-ownership-of-a-test-project:
+  en: 2f8838ca01b5ee0d
+  zh: f8bc0bb77f47956c
+/testpilot-phase-0-architecture-decision-records/adr-009-web-host-client-and-remote-api:
+  en: fc9f742843b13564
+  zh: 485e35de6973eec0
+/testpilot-phase-0-architecture-decision-records/adr-010-browser-network-egress-and-worker-isolation:
+  en: 016667074ad68d32
+  zh: 274b79fd1a0b53a6
+/testpilot-phase-0-architecture-decision-records/adr-011-approval-credentials-and-high-risk-operations:
+  en: 6743041b116b5cf2
+  zh: d87c066b69e829e6
+/testpilot-phase-0-architecture-decision-records/adr-012-evidence-attachment-and-report-lifetimes:
+  en: 583ff643288fbf50
+  zh: f8d7bd6b6d9ed9b8
+/testpilot-phase-0-architecture-decision-records/adr-013-concurrency-cancellation-recovery-and-reclamation:
+  en: 90faa04d3898cc7c
+  zh: 86cb5efd12c47eeb
+/testpilot-phase-0-architecture-decision-records/adr-014-tests-continuous-integration-and-quality-gates:
+  en: a4fb249f4b9b3369
+  zh: d881f03acc34e76e
+/testpilot-phase-0-architecture-decision-records/records-that-remain-open:
+  en: 532af0f2f6307ebe
+  zh: 2c9363d172671889
+/testpilot-phase-0-architecture-decision-records/further-exploration:
+  en: f15f84d6a8366653
+  zh: 0da7129f92d4e7a7

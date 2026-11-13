@@ -1,0 +1,28 @@
+# Bilingual-pair consistency record for evidence-observability-audit.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/testpilot/phase-0/evidence-observability-audit.md
+/testpilot-phase-0-evidence-and-observability-audit:
+  en: 433cbcef1b6bf8ce
+  zh: f3808d9aca9afd2f
+/testpilot-phase-0-evidence-and-observability-audit/attachments:
+  en: 0aec55d1e371a3b5
+  zh: c90b1dbec7143fc5
+/testpilot-phase-0-evidence-and-observability-audit/deliverables:
+  en: 5d611a423afd4d38
+  zh: dae759947fbbbfc9
+/testpilot-phase-0-evidence-and-observability-audit/telemetry:
+  en: c84d791bb3e51fca
+  zh: dd13d3f5f906f898
+/testpilot-phase-0-evidence-and-observability-audit/capabilities-that-do-not-exist:
+  en: 4dbde3c14648f396
+  zh: eb7c9d0a4f4f51ee
+/testpilot-phase-0-evidence-and-observability-audit/answers:
+  en: ad7ff59fc0447de6
+  zh: f6fccd505c10370c
+/testpilot-phase-0-evidence-and-observability-audit/what-testpilot-must-not-assume:
+  en: 6a22bcb539038815
+  zh: 05f265332f6c37f8
+/testpilot-phase-0-evidence-and-observability-audit/further-exploration:
+  en: 6c805e2efcec414d
+  zh: 36b3680e7f97aaea

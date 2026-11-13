@@ -1,0 +1,28 @@
+# Bilingual-pair consistency record for mcp-contract-audit.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/testpilot/phase-0/mcp-contract-audit.md
+/testpilot-phase-0-mcp-contract-audit:
+  en: 10ce26eccd6f3a0a
+  zh: 5e64dc97bd2e6f5b
+/testpilot-phase-0-mcp-contract-audit/how-the-measurement-was-made:
+  en: 26453ca5ba7eb3bf
+  zh: 0c0f4567ba7ff078
+/testpilot-phase-0-mcp-contract-audit/the-advertised-tool-list:
+  en: 341dec46bab511bf
+  zh: cefaeced08434008
+/testpilot-phase-0-mcp-contract-audit/what-the-plan-s-assumptions-missed:
+  en: d51bcd58fa621199
+  zh: 4bb0617f896f277e
+/testpilot-phase-0-mcp-contract-audit/the-annotations-gap:
+  en: 41005ac004f7d3d2
+  zh: 5851c54b642d9227
+/testpilot-phase-0-mcp-contract-audit/result-projection:
+  en: 21971de590b04b69
+  zh: cb8e2a90063280b5
+/testpilot-phase-0-mcp-contract-audit/what-testpilot-must-not-assume:
+  en: 4ab8f0d47887bd4e
+  zh: dfc3f8c24eb3f3d2
+/testpilot-phase-0-mcp-contract-audit/further-exploration:
+  en: 1b4d56c6fb81c831
+  zh: ddbf859482d0f69b

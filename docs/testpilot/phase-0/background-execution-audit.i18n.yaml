@@ -1,0 +1,73 @@
+# Bilingual-pair consistency record for background-execution-audit.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/testpilot/phase-0/background-execution-audit.md
+/testpilot-phase-0-background-execution-jobs-workflow-ptc-and-subagents:
+  en: d05d6652598e9d7d
+  zh: 2ed38cb4be693cb2
+/testpilot-phase-0-background-execution-jobs-workflow-ptc-and-subagents/scope-and-verdict:
+  en: 16144eac26a5f31b
+  zh: 10914201f870ac91
+/testpilot-phase-0-background-execution-jobs-workflow-ptc-and-subagents/the-four-background-facilities:
+  en: ccda951a49ee7d0c
+  zh: f589b86e537ddd53
+/testpilot-phase-0-background-execution-jobs-workflow-ptc-and-subagents/jobs:
+  en: 646c5c22e189be2e
+  zh: 646c5c22e189be2e
+/testpilot-phase-0-background-execution-jobs-workflow-ptc-and-subagents/jobs/the-abstract-seam:
+  en: 3b27096fad019b14
+  zh: 16b61f3a0d38e681
+/testpilot-phase-0-background-execution-jobs-workflow-ptc-and-subagents/jobs/the-local-implementation:
+  en: ca0f2b8249d1d7d9
+  zh: 6bf534b88c7b74c9
+/testpilot-phase-0-background-execution-jobs-workflow-ptc-and-subagents/jobs/model-visible-tools-and-completion-notices:
+  en: 6ef1b343741a350d
+  zh: 681203c2c6abba1b
+/testpilot-phase-0-background-execution-jobs-workflow-ptc-and-subagents/workflow:
+  en: 7136000e494604c0
+  zh: 7136000e494604c0
+/testpilot-phase-0-background-execution-jobs-workflow-ptc-and-subagents/workflow/the-engine-seam:
+  en: edad7c8a7c6b0e03
+  zh: b281a3a95e6a5a97
+/testpilot-phase-0-background-execution-jobs-workflow-ptc-and-subagents/workflow/the-ptc-backed-implementation:
+  en: 202c935e3978ebf6
+  zh: 91377fa9b41a7c54
+/testpilot-phase-0-background-execution-jobs-workflow-ptc-and-subagents/workflow/host-bindings-and-failure-layering:
+  en: eb890c61dbdb8a19
+  zh: 1f73567269ac1c89
+/testpilot-phase-0-background-execution-jobs-workflow-ptc-and-subagents/ptc:
+  en: 175ca45301e2d116
+  zh: 175ca45301e2d116
+/testpilot-phase-0-background-execution-jobs-workflow-ptc-and-subagents/ptc/the-abstract-seam:
+  en: 0e9358bee9a95719
+  zh: 347eb95d3910d0e5
+/testpilot-phase-0-background-execution-jobs-workflow-ptc-and-subagents/ptc/the-node-implementation:
+  en: 43b5ac3bc94c08db
+  zh: 6faf736ef66df506
+/testpilot-phase-0-background-execution-jobs-workflow-ptc-and-subagents/subagent:
+  en: b7f14ed26a7a8d5e
+  zh: 25941f1675e77307
+/testpilot-phase-0-background-execution-jobs-workflow-ptc-and-subagents/what-a-deterministic-test-executor-should-reuse:
+  en: 45b736e38a4600a3
+  zh: af5289680f6bf4c3
+/testpilot-phase-0-background-execution-jobs-workflow-ptc-and-subagents/what-a-deterministic-test-executor-should-reuse/why-ptc-does-not-fit:
+  en: 690e6a78ceb71b0c
+  zh: 389c81c934621d79
+/testpilot-phase-0-background-execution-jobs-workflow-ptc-and-subagents/what-a-deterministic-test-executor-should-reuse/why-jobs-does-not-fit:
+  en: 3703debf664269d0
+  zh: 3501b0a17e2a7e21
+/testpilot-phase-0-background-execution-jobs-workflow-ptc-and-subagents/what-a-deterministic-test-executor-should-reuse/why-workflow-does-not-fit:
+  en: b779b910f277479e
+  zh: dd779df0e289c32c
+/testpilot-phase-0-background-execution-jobs-workflow-ptc-and-subagents/what-a-deterministic-test-executor-should-reuse/why-subagent-does-not-fit:
+  en: 4b5616a50a7f54ae
+  zh: 1707d21111247776
+/testpilot-phase-0-background-execution-jobs-workflow-ptc-and-subagents/what-a-deterministic-test-executor-should-reuse/what-to-reuse-ctx-subprocess:
+  en: 3a6ecc031281d35d
+  zh: 760b10bd521922a0
+/testpilot-phase-0-background-execution-jobs-workflow-ptc-and-subagents/approval-and-the-background-worker:
+  en: 3e0a35b892433539
+  zh: 28ce6655c5f7482c
+/testpilot-phase-0-background-execution-jobs-workflow-ptc-and-subagents/further-exploration:
+  en: 16ea7ac536daa439
+  zh: a44e312f8b416f72

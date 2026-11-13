@@ -1,0 +1,34 @@
+# Bilingual-pair consistency record for profile-bundle-integration-audit.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/testpilot/phase-0/profile-bundle-integration-audit.md
+/testpilot-phase-0-profile-bundle-and-loader-integration-audit:
+  en: 6d1783d9acdf6bb7
+  zh: 8ec3de009ba4fcd1
+/testpilot-phase-0-profile-bundle-and-loader-integration-audit/the-profile-directory:
+  en: 5cef4b1e976a12a5
+  zh: 64748d883835929b
+/testpilot-phase-0-profile-bundle-and-loader-integration-audit/patch-layer-order:
+  en: ff6e7dae561d11da
+  zh: a9119ab43912bfea
+/testpilot-phase-0-profile-bundle-and-loader-integration-audit/what-a-bundle-is:
+  en: d2ec1f398449878d
+  zh: 193f5746cf4ca929
+/testpilot-phase-0-profile-bundle-and-loader-integration-audit/what-the-plugin-manager-does-with-an-installed-package:
+  en: ca0599802329c90b
+  zh: b56dfd634c55e834
+/testpilot-phase-0-profile-bundle-and-loader-integration-audit/how-the-loader-replaces-changed-code:
+  en: 147098173b48116a
+  zh: 346da02b68ad72a1
+/testpilot-phase-0-profile-bundle-and-loader-integration-audit/default-product-isolation:
+  en: 56c946a7e697a1ee
+  zh: 1e7e10a6b9d938fb
+/testpilot-phase-0-profile-bundle-and-loader-integration-audit/how-testpilot-turns-on-without-touching-a-shipped-default:
+  en: a7131a176a241023
+  zh: 6eae788afd4944f5
+/testpilot-phase-0-profile-bundle-and-loader-integration-audit/the-real-composition-test-path:
+  en: 4578050df7742837
+  zh: c5bcdd3643aae347
+/testpilot-phase-0-profile-bundle-and-loader-integration-audit/further-exploration:
+  en: 883db499de0f4cdd
+  zh: f97dc749c1c7eb04

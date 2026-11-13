@@ -1,0 +1,37 @@
+# Bilingual-pair consistency record for project-ownership-audit.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/testpilot/phase-0/project-ownership-audit.md
+/testpilot-phase-0-project-ownership-audit:
+  en: 3aa82129b856eeae
+  zh: 919e23c5595a7062
+/testpilot-phase-0-project-ownership-audit/workspace-identity:
+  en: df0aa2f3b3cf9787
+  zh: f2380a0f244b8862
+/testpilot-phase-0-project-ownership-audit/the-registry:
+  en: 965e36174d69fe7e
+  zh: a6907798f0de7d18
+/testpilot-phase-0-project-ownership-audit/the-one-owner-invariant:
+  en: ec7e8f216fdccd5b
+  zh: 16a3134ac6756b6e
+/testpilot-phase-0-project-ownership-audit/archive-admission:
+  en: 19c6e6b461280eac
+  zh: 3412ed12966d03f5
+/testpilot-phase-0-project-ownership-audit/anonymous-installation-identity:
+  en: fbe6dedf2e401697
+  zh: 4c3fc06fc88b7d6d
+/testpilot-phase-0-project-ownership-audit/remote-access:
+  en: d342e7827148126d
+  zh: 9bd8762b067fd1ae
+/testpilot-phase-0-project-ownership-audit/where-a-testproject-belongs:
+  en: 6f1efdbbe5a73e4d
+  zh: 3d0f319f6be267bb
+/testpilot-phase-0-project-ownership-audit/isolation-between-projects:
+  en: 51cf724c9013aa15
+  zh: fa678568b7290480
+/testpilot-phase-0-project-ownership-audit/what-testpilot-must-not-assume:
+  en: 3294527424482cdb
+  zh: f56fb7d0897959ac
+/testpilot-phase-0-project-ownership-audit/further-exploration:
+  en: a8d1322b4e4cca3b
+  zh: 070aa0e380b69651

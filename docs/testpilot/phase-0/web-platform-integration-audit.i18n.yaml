@@ -1,0 +1,31 @@
+# Bilingual-pair consistency record for web-platform-integration-audit.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/testpilot/phase-0/web-platform-integration-audit.md
+/testpilot-phase-0-web-platform-integration-audit:
+  en: 7c11e8f445e8e2b1
+  zh: 0e952fb697f66515
+/testpilot-phase-0-web-platform-integration-audit/the-host-http-service:
+  en: f230b07ca8580ae6
+  zh: 939c038142a93d4f
+/testpilot-phase-0-web-platform-integration-audit/the-api-gateway:
+  en: a98f500262c0210d
+  zh: 1ec8a9c145021584
+/testpilot-phase-0-web-platform-integration-audit/the-three-controllers:
+  en: 98c70b88ed49b7c5
+  zh: 18e0f94e1b32730b
+/testpilot-phase-0-web-platform-integration-audit/the-typert-type-boundary:
+  en: 98b3d996b0713fac
+  zh: 09f68a64cbfa50ec
+/testpilot-phase-0-web-platform-integration-audit/the-client-plugin-system:
+  en: 5a653fb41d6f609e
+  zh: 4ec3435912646cf9
+/testpilot-phase-0-web-platform-integration-audit/answers:
+  en: 161a0ef5e8459586
+  zh: d02f9272050001bc
+/testpilot-phase-0-web-platform-integration-audit/what-testpilot-must-not-assume:
+  en: f20561369ea9a1be
+  zh: 173c18449f7cf593
+/testpilot-phase-0-web-platform-integration-audit/further-exploration:
+  en: 53ac868e52bf2873
+  zh: 8c5ad1363222926a

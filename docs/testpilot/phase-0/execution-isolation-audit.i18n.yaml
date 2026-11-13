@@ -1,0 +1,37 @@
+# Bilingual-pair consistency record for execution-isolation-audit.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/testpilot/phase-0/execution-isolation-audit.md
+/testpilot-phase-0-execution-isolation-audit:
+  en: 6f302532345174f8
+  zh: 2b4c0cd23794e7e5
+/testpilot-phase-0-execution-isolation-audit/process-containment:
+  en: 6f637f1a8bc16388
+  zh: 261a375a85f65165
+/testpilot-phase-0-execution-isolation-audit/subprocess-tree-management:
+  en: 9faac5329b83ac08
+  zh: f401354f235ad229
+/testpilot-phase-0-execution-isolation-audit/file-read-and-write-limits:
+  en: c0341b00e4528210
+  zh: ee2b0563223adc5c
+/testpilot-phase-0-execution-isolation-audit/the-browser-s-own-file-boundary:
+  en: 30be0634b995fae3
+  zh: 0f4b0082f715ea4d
+/testpilot-phase-0-execution-isolation-audit/network-egress:
+  en: 2f4757a5138501cc
+  zh: 67d2f05d208f6b45
+/testpilot-phase-0-execution-isolation-audit/dns-rebinding-redirects-and-websocket:
+  en: 8aed2362a750ca43
+  zh: 327f9814f50eb118
+/testpilot-phase-0-execution-isolation-audit/the-browser-attach-endpoint:
+  en: 68eacd0722914b05
+  zh: d626a4621b4dfec3
+/testpilot-phase-0-execution-isolation-audit/worker-timeout-termination-and-quiescence:
+  en: 140124d70421a181
+  zh: 96a55529dfacb61d
+/testpilot-phase-0-execution-isolation-audit/threat-model:
+  en: dae0d2a52975443e
+  zh: 943d5113db0bd0c8
+/testpilot-phase-0-execution-isolation-audit/further-exploration:
+  en: e02dab3e56b74ad8
+  zh: 497d02783d042123

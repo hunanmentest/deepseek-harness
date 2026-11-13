@@ -1,0 +1,25 @@
+# Bilingual-pair consistency record for browser-provider-audit.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/testpilot/phase-0/browser-provider-audit.md
+/testpilot-phase-0-browser-provider-audit:
+  en: 46f33802e185fb49
+  zh: fd4755b30cdbc377
+/testpilot-phase-0-browser-provider-audit/the-registration-surface:
+  en: e9179a30317f8e98
+  zh: 12efc2bfe6f5208c
+/testpilot-phase-0-browser-provider-audit/the-shared-runtime:
+  en: 9489bc06f0a78208
+  zh: 6cb9f85029530f31
+/testpilot-phase-0-browser-provider-audit/the-mcp-mounting-helper:
+  en: 05d5f4ef2a29aba6
+  zh: ef5dfa3d5735e249
+/testpilot-phase-0-browser-provider-audit/the-playwright-mcp-provider:
+  en: 700ad0f05883450c
+  zh: 13cb225e5a717d09
+/testpilot-phase-0-browser-provider-audit/what-the-repository-does-not-provide:
+  en: 0d8d322a80c166c8
+  zh: 1eca9271aa7b850c
+/testpilot-phase-0-browser-provider-audit/further-exploration:
+  en: 24e1156239ee2309
+  zh: bb3bbe15e2a3efdb

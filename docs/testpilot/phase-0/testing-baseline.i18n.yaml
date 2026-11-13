@@ -1,0 +1,31 @@
+# Bilingual-pair consistency record for testing-baseline.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/testpilot/phase-0/testing-baseline.md
+/testpilot-phase-0-testing-baseline:
+  en: 147ac262e0e14ac0
+  zh: f3cbbd82d985c5c4
+/testpilot-phase-0-testing-baseline/execution-environment:
+  en: 8609b7eb480de5be
+  zh: 85ad7fb942c93f54
+/testpilot-phase-0-testing-baseline/dependency-restoration:
+  en: bb9874d720cb0009
+  zh: b5969d63739b1b7d
+/testpilot-phase-0-testing-baseline/the-unit-baseline:
+  en: f2e07c1061a1c4a1
+  zh: 0b4572564613d703
+/testpilot-phase-0-testing-baseline/the-upstream-browser-baseline:
+  en: edabe904bfe04d5d
+  zh: 063068b23a658e0a
+/testpilot-phase-0-testing-baseline/what-the-existing-suites-already-prove:
+  en: 071f5443829e85e7
+  zh: 258d9071bc03b831
+/testpilot-phase-0-testing-baseline/gaps-phase-1-must-close:
+  en: f3457cfc964b2960
+  zh: c2a7cb71415458cf
+/testpilot-phase-0-testing-baseline/commands-not-run:
+  en: 5922b9833874bed9
+  zh: 135d69e50c807e41
+/testpilot-phase-0-testing-baseline/further-exploration:
+  en: 5d34417fe9151aad
+  zh: 14fb5c8375ba8e12

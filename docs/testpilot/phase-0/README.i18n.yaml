@@ -1,0 +1,25 @@
+# Bilingual-pair consistency record for README.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/testpilot/phase-0/README.md
+/testpilot-phase-0-source-audit-and-technical-baseline:
+  en: 4a2622becb655c32
+  zh: 4e55ec631e34cd4b
+/testpilot-phase-0-source-audit-and-technical-baseline/verdict:
+  en: 3de00539309bd96b
+  zh: 45677bcd4c4ae0eb
+/testpilot-phase-0-source-audit-and-technical-baseline/what-the-audit-established:
+  en: dc5f88bc0c9ceffb
+  zh: 6bffeceea43ea730
+/testpilot-phase-0-source-audit-and-technical-baseline/the-audit-documents:
+  en: 9b90bca5d2ab52ec
+  zh: 4b242f778033f658
+/testpilot-phase-0-source-audit-and-technical-baseline/evidence-convention:
+  en: f7aadbd1e6938e2f
+  zh: 53e2cfc046c08443
+/testpilot-phase-0-source-audit-and-technical-baseline/phase-1-boundary:
+  en: 70e1050b619483cc
+  zh: fef36819623765a8
+/testpilot-phase-0-source-audit-and-technical-baseline/further-exploration:
+  en: 19b5b479590bf48f
+  zh: 4d0e3f321e3ca089

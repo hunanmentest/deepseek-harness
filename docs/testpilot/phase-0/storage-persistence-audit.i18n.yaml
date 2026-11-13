@@ -1,0 +1,76 @@
+# Bilingual-pair consistency record for storage-persistence-audit.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/testpilot/phase-0/storage-persistence-audit.md
+/testpilot-phase-0-storage-persistence-and-migration-audit:
+  en: 5305b42393c69971
+  zh: e9c1cb0bd53eb0e4
+/testpilot-phase-0-storage-persistence-and-migration-audit/scope-and-verdict:
+  en: d2a3ea0e66c552bb
+  zh: 4b59d07647914ba6
+/testpilot-phase-0-storage-persistence-and-migration-audit/the-storage-hub:
+  en: c0f405c94888d8da
+  zh: c368ab8f2a563b42
+/testpilot-phase-0-storage-persistence-and-migration-audit/the-storage-domain:
+  en: 5f9588c8e362add4
+  zh: e28cf766eadcc3fd
+/testpilot-phase-0-storage-persistence-and-migration-audit/the-storage-domain/declaring-a-domain:
+  en: ba18006ffad9c449
+  zh: 1e13cdfc9bc3c5f4
+/testpilot-phase-0-storage-persistence-and-migration-audit/the-storage-domain/the-write-chain-and-its-ordering:
+  en: b697e793cc01477e
+  zh: 1ee7cc47d2497117
+/testpilot-phase-0-storage-persistence-and-migration-audit/the-storage-domain/change-events-and-errors:
+  en: 591c6e9969b9171b
+  zh: 88e248f4edd9c19a
+/testpilot-phase-0-storage-persistence-and-migration-audit/the-storage-domain/opening-a-domain:
+  en: ba3fca23d02bd527
+  zh: 8a2c57ed7925a6f6
+/testpilot-phase-0-storage-persistence-and-migration-audit/the-storage-domain/what-the-domain-layer-does-not-provide:
+  en: 44d858afb2198788
+  zh: fa11875c8863b9fd
+/testpilot-phase-0-storage-persistence-and-migration-audit/the-two-backends:
+  en: 7c40e6af1ef3c91c
+  zh: 11dabecb68a2f62b
+/testpilot-phase-0-storage-persistence-and-migration-audit/the-two-backends/the-json-backend-is-files-not-memory:
+  en: e49e02d3275714eb
+  zh: cb9c5f4b2c5f9c16
+/testpilot-phase-0-storage-persistence-and-migration-audit/the-two-backends/the-sqlite-backend:
+  en: 71e6c5c082d49d79
+  zh: 8afbc5ed45da347d
+/testpilot-phase-0-storage-persistence-and-migration-audit/the-two-backends/backend-comparison:
+  en: 7ed0cfa0618a67fe
+  zh: d16c3f866f2ae9ae
+/testpilot-phase-0-storage-persistence-and-migration-audit/session-persistence-and-the-version-chain:
+  en: af641b7edb3e4bf5
+  zh: 6983fe41c1367a77
+/testpilot-phase-0-storage-persistence-and-migration-audit/two-precedents-to-copy:
+  en: c96754b84b04a67c
+  zh: 7134d7f97fecbf2c
+/testpilot-phase-0-storage-persistence-and-migration-audit/two-precedents-to-copy/precedent-one-schedule:
+  en: 029600fe32ff5f46
+  zh: 58e2f7d582176874
+/testpilot-phase-0-storage-persistence-and-migration-audit/two-precedents-to-copy/precedent-two-workspace:
+  en: 2d565733ff03fcbf
+  zh: fcb5a4fe08c9d8b6
+/testpilot-phase-0-storage-persistence-and-migration-audit/attachments:
+  en: ef221096862a8d70
+  zh: 83a993f741ab16b6
+/testpilot-phase-0-storage-persistence-and-migration-audit/where-testpilot-records-live:
+  en: ed436c0d490694c1
+  zh: 3bd601248c0c0af0
+/testpilot-phase-0-storage-persistence-and-migration-audit/where-testpilot-records-live/the-storage-choice:
+  en: 74aad14ab0d9b97d
+  zh: 6a6ff6f48398dbb8
+/testpilot-phase-0-storage-persistence-and-migration-audit/where-testpilot-records-live/the-evolution-procedure:
+  en: ac77281d6693d456
+  zh: 285e553d3e1d5854
+/testpilot-phase-0-storage-persistence-and-migration-audit/where-testpilot-records-live/large-files:
+  en: 64778859438b7807
+  zh: 55b6f5eb449a6f67
+/testpilot-phase-0-storage-persistence-and-migration-audit/concurrency-retention-and-collection:
+  en: 8deda4ab81d002dc
+  zh: e889f872772a5f60
+/testpilot-phase-0-storage-persistence-and-migration-audit/further-exploration:
+  en: 00dc762dc882d27a
+  zh: 30168f999a02100a

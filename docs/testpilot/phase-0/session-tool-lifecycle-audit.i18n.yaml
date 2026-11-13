@@ -1,0 +1,37 @@
+# Bilingual-pair consistency record for session-tool-lifecycle-audit.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/testpilot/phase-0/session-tool-lifecycle-audit.md
+/testpilot-phase-0-agent-session-and-tool-lifecycle-audit:
+  en: 1bfe7a3b4f8943f2
+  zh: 8a42dc7a8e51f4c4
+/testpilot-phase-0-agent-session-and-tool-lifecycle-audit/agent-creation-and-recovery:
+  en: 735a2e576455781c
+  zh: fdce583e205276f9
+/testpilot-phase-0-agent-session-and-tool-lifecycle-audit/session-persistence:
+  en: 9284c6d0a5b7b0b6
+  zh: 5bba486f86f99e99
+/testpilot-phase-0-agent-session-and-tool-lifecycle-audit/tool-registry:
+  en: de8c0b94a8268426
+  zh: 3d6a3ad4fce20adb
+/testpilot-phase-0-agent-session-and-tool-lifecycle-audit/tool-pipeline:
+  en: 98dacb72e1d32aea
+  zh: ff27dbfceb922b1e
+/testpilot-phase-0-agent-session-and-tool-lifecycle-audit/tool-timeout-and-cancellation:
+  en: 829c3ad1e7ff3a4b
+  zh: daab10840fe3fcdc
+/testpilot-phase-0-agent-session-and-tool-lifecycle-audit/agent-initiator-scope:
+  en: 3eeeb27a2de4f51c
+  zh: 1805cba8cd25c440
+/testpilot-phase-0-agent-session-and-tool-lifecycle-audit/testrun-is-not-a-session:
+  en: bd139f0e174072b8
+  zh: 153a936ac3d07c83
+/testpilot-phase-0-agent-session-and-tool-lifecycle-audit/background-execution-and-the-agent-requirement:
+  en: b0b58b9a997384b1
+  zh: bb48cb20dcae7297
+/testpilot-phase-0-agent-session-and-tool-lifecycle-audit/worker-lifecycle-and-resource-ownership:
+  en: c642b91f18a0bfad
+  zh: 65d5d56b78d85eab
+/testpilot-phase-0-agent-session-and-tool-lifecycle-audit/further-exploration:
+  en: 9d52063b18d4d3bf
+  zh: 7068a921bce159a0

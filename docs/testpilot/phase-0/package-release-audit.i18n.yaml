@@ -1,0 +1,37 @@
+# Bilingual-pair consistency record for package-release-audit.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/testpilot/phase-0/package-release-audit.md
+/testpilot-phase-0-package-classification-release-and-documentation-audit:
+  en: 11f2d6259e5c0695
+  zh: b13635996440f29f
+/testpilot-phase-0-package-classification-release-and-documentation-audit/package-classification-and-naming:
+  en: 0f9c405058966d5e
+  zh: 25530a6528faad00
+/testpilot-phase-0-package-classification-release-and-documentation-audit/dependency-isolation:
+  en: e3011381d62587fd
+  zh: 62c6d531fd438664
+/testpilot-phase-0-package-classification-release-and-documentation-audit/dependency-versions:
+  en: d4e6e9ed2b5d79a3
+  zh: 5b0bc6f422b799f2
+/testpilot-phase-0-package-classification-release-and-documentation-audit/dependencies-testpilot-should-not-add:
+  en: 17b38275c00b57ab
+  zh: 07150230dfc558ee
+/testpilot-phase-0-package-classification-release-and-documentation-audit/candidates-that-need-verification-before-use:
+  en: 4d0c58670bbc2063
+  zh: 57d0cef303878011
+/testpilot-phase-0-package-classification-release-and-documentation-audit/manifest-requirements:
+  en: c45dbf884dc0b04c
+  zh: 2e09853660d2453f
+/testpilot-phase-0-package-classification-release-and-documentation-audit/documentation-requirements:
+  en: 3fc07815887c5eb1
+  zh: 8bc3356d4c9d08c9
+/testpilot-phase-0-package-classification-release-and-documentation-audit/locale-files:
+  en: eaa41a29afdb3cee
+  zh: 9782eddc1f775acd
+/testpilot-phase-0-package-classification-release-and-documentation-audit/frozen-phase-1-file-and-dependency-list:
+  en: a9ca2e2745f70c0b
+  zh: af205a306aa25f89
+/testpilot-phase-0-package-classification-release-and-documentation-audit/further-exploration:
+  en: 2be0968d4d6f1ac8
+  zh: 2e2e82f4680cdc78

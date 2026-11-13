@@ -1,0 +1,28 @@
+# Bilingual-pair consistency record for repository-audit.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/testpilot/phase-0/repository-audit.md
+/testpilot-phase-0-repository-and-package-architecture-audit:
+  en: d89ed2993db890eb
+  zh: 91fa2115c7910e1f
+/testpilot-phase-0-repository-and-package-architecture-audit/audit-target-and-local-state:
+  en: 993587cc8f8bedcf
+  zh: 906316c466761caf
+/testpilot-phase-0-repository-and-package-architecture-audit/workspace-layout:
+  en: 4b933c4fac9adac7
+  zh: a16534c6280083f2
+/testpilot-phase-0-repository-and-package-architecture-audit/package-naming-and-the-directory-diagram:
+  en: 1c79a5501d210f43
+  zh: a1f49073fe746f59
+/testpilot-phase-0-repository-and-package-architecture-audit/dependency-state:
+  en: d99e55d34c9d4817
+  zh: 11959c33f891886e
+/testpilot-phase-0-repository-and-package-architecture-audit/repository-constraints-that-bind-a-new-package:
+  en: ff72e94b71d97a58
+  zh: ad75093d27d2e5f8
+/testpilot-phase-0-repository-and-package-architecture-audit/where-testpilot-s-code-belongs:
+  en: 8d7c7b37f64d0f29
+  zh: 81cbdbf4f60290a0
+/testpilot-phase-0-repository-and-package-architecture-audit/further-exploration:
+  en: 547aedf2b6ea0ab1
+  zh: cf1b3bea06e52fed

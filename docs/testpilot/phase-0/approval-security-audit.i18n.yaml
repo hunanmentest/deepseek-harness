@@ -1,0 +1,34 @@
+# Bilingual-pair consistency record for approval-security-audit.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write docs/testpilot/phase-0/approval-security-audit.md
+/testpilot-phase-0-approval-permission-and-credential-audit:
+  en: 348f8c4a12686aa5
+  zh: b107530f8b66800b
+/testpilot-phase-0-approval-permission-and-credential-audit/the-approval-service:
+  en: b52a1ad167313673
+  zh: e9de58b07575e86f
+/testpilot-phase-0-approval-permission-and-credential-audit/the-approval-answerer-waterfall:
+  en: 8b1f6b3dd569556a
+  zh: 7e3f08f89f169ce5
+/testpilot-phase-0-approval-permission-and-credential-audit/the-ask-and-never-policies:
+  en: e6b5b28943a260d8
+  zh: 7d00a639fc488db0
+/testpilot-phase-0-approval-permission-and-credential-audit/ui-and-acp-answers:
+  en: 9410cf2346f78955
+  zh: d723237b0de15bf8
+/testpilot-phase-0-approval-permission-and-credential-audit/credential-references:
+  en: e6acb4911493611d
+  zh: 0990fe5982a24d8d
+/testpilot-phase-0-approval-permission-and-credential-audit/the-boundary-of-secret-handling:
+  en: 0a548178d22983a6
+  zh: ed3f077e985142a1
+/testpilot-phase-0-approval-permission-and-credential-audit/what-this-means-for-a-test-environment:
+  en: 25a114c168d8faea
+  zh: 709587f577e86e43
+/testpilot-phase-0-approval-permission-and-credential-audit/precedents-for-high-risk-approval:
+  en: eb168072e00a59cf
+  zh: 60ed6ef52c8f00f9
+/testpilot-phase-0-approval-permission-and-credential-audit/further-exploration:
+  en: dd5025a271b5d4a4
+  zh: ca5263b838b196d7
