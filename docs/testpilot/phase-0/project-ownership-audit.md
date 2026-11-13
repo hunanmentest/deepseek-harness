@@ -138,6 +138,8 @@ The Gateway enforces the order of the two checks. Access precedes lookup resolut
 **Recommended shape.** TestProject is its own domain record with its own table, and every record carries a `workspaceId: WorkspaceId` foreign key.
 
 ```ts
+import type { WorkspaceId } from '@deepseek-ai/dsh-workspace'
+
 interface TestProjectRecord {
   workspaceId: WorkspaceId
   path: string

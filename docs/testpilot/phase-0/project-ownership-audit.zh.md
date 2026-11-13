@@ -138,6 +138,8 @@ Gateway 强制这两步检查的顺序。访问先于 lookup 解析，因此被�
 **建议形态。** TestProject 是自己的域记录，自带表，每条记录携带 `workspaceId: WorkspaceId` 外键。
 
 ```ts
+import type { WorkspaceId } from '@deepseek-ai/dsh-workspace'
+
 interface TestProjectRecord {
   workspaceId: WorkspaceId
   path: string

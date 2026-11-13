@@ -3,38 +3,32 @@
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write docs/testpilot/phase-0/phase-0-acceptance.md
 /testpilot-phase-0-acceptance:
-  en: d29c1ef9d473ace9
-  zh: 266282f3cc24198a
+  en: 9b26fb105104fbb3
+  zh: c563e76e61ebc7d3
 /testpilot-phase-0-acceptance/verdict:
-  en: ebbe8d5f61df18c9
-  zh: 61e0ac0fefaab819
-/testpilot-phase-0-acceptance/architecture-acceptance:
-  en: 38ca4f1a8fc1507d
-  zh: 7273ab161029be9c
-/testpilot-phase-0-acceptance/security-acceptance:
-  en: 3d5e754ce281e024
-  zh: d1cf322c2d3e8b4d
-/testpilot-phase-0-acceptance/engineering-acceptance:
-  en: bd936c94ac4dbc45
-  zh: 03852998a42d4fb8
-/testpilot-phase-0-acceptance/blocking-conditions:
-  en: a4cdb0f86375d981
-  zh: 7f48b10ba5c0d202
-/testpilot-phase-0-acceptance/the-one-decision-that-blocks-the-rest:
-  en: 758ee0805f14ce92
-  zh: 5d1ce4a6ea9038f0
+  en: e3ce4693d3736d52
+  zh: 2b9fbee25bc23fe2
+/testpilot-phase-0-acceptance/acceptance-checklist:
+  en: befaca4e287bbf7e
+  zh: 2d88ce247bcea3b4
+/testpilot-phase-0-acceptance/the-work-packages:
+  en: 1dd47cea93788500
+  zh: 0cc823296513a0b6
+/testpilot-phase-0-acceptance/the-blocking-conditions:
+  en: c329f8274d0988bb
+  zh: 8e5d36d1f3735124
+/testpilot-phase-0-acceptance/the-decision-that-blocks-the-rest:
+  en: aabea0afa6905c99
+  zh: bef7252c9cad052b
 /testpilot-phase-0-acceptance/the-second-open-item-redirect-coverage:
-  en: d94c120abb8f2cd5
-  zh: 97a53ba22feeda4a
-/testpilot-phase-0-acceptance/the-third-open-item-repository-state:
-  en: 35dabba47792e242
-  zh: 735f0581606580c1
+  en: 68b581ea135eab5b
+  zh: e0b1f57330da68ff
 /testpilot-phase-0-acceptance/phase-1-boundary:
-  en: 8a2adf3ac8fcf955
-  zh: fcbeaab553c56a9a
+  en: 18bfabdbeefc40ae
+  zh: 4e08043e82f4f6c4
 /testpilot-phase-0-acceptance/audit-status-summary:
-  en: 1ba3d71ddfe7b46e
-  zh: 67d5f0d45714d67a
+  en: 8378ba9b842de5d6
+  zh: 4be15710cb6e0e43
 /testpilot-phase-0-acceptance/further-exploration:
-  en: 23ec10668e68f7f0
-  zh: fddc91e6d0f3b978
+  en: 49b655377c48e73e
+  zh: e99fa39bd33b3000

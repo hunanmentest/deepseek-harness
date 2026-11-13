@@ -21,6 +21,8 @@ The audit ran against the working tree at `C:\code\deepseek-harness-master`. The
 
 Two consequences follow. The commit named in the plan cannot be confirmed against this tree, so every "verified" claim in this audit means "verified in the files present", not "verified at the plan's baseline commit". The local Node version is below the `>=24.9.0` the root `package.json` requires under `engines`; the workspace still installs and tests cleanly, but the environment is not the one the manifest declares.
 
+The repository's history changed again after that fetch, by an operation outside this audit. The plan's named commit is no longer present in the object store, the commit that carries the same upstream merge is now a different object, and this audit's own document directory was committed as a local commit on top of it. The audited content is unaffected, because every claim above was read from the working tree's files rather than from a commit, and the working tree's tracked sources were unchanged throughout. The current local state is one upstream-tracking commit carrying the same merge message, one local commit holding this audit's documents, and no modification to any tracked source file.
+
 ## Workspace layout
 
 The root `package.json` and `pnpm-workspace.yaml` agree that the workspace covers `vendor/*`, `packages/*/*`, `native/system`, `native/system/packages/*`, `apps/*`, `benchmarks`, `website`, and `python/sdk-runtime` (`package.json:11-18`, `pnpm-workspace.yaml:1-18`). `packages/*/*` is the shape a new TestPilot package must take, because it places one package inside one product group.

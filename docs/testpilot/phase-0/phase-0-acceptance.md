@@ -26,7 +26,7 @@ The audit itself is complete. What is missing is not evidence but decisions that
 | 10 | The permission and security policy is determined | met | ADR-010; the approval branch in ADR-011 is blocked |
 | 11 | The evidence storage and redaction policy is determined | met | ADR-012 |
 | 12 | The existing test baseline is recorded | met | [testing baseline](testing-baseline.md) |
-| 13 | The local user modification protection plan is confirmed | met | the working tree carries only this audit's new directory as an untracked change |
+| 13 | The local user modification protection plan is confirmed | met | no tracked source file was modified; the only local change is this audit's own document directory |
 | 14 | The Phase 1 new-file and dependency lists are frozen | met | [package release audit](package-release-audit.md) |
 
 ## The work packages
@@ -60,7 +60,7 @@ The plan lists seven conditions that bar entry into Phase 1.
 | 4 | Dangerous-operation approval cannot be shown to precede the operation | **not cleared** — the seam exists and its ordering inside a turn is established, but the background branch is undefined |
 | 5 | The network access enforcement point cannot be identified | cleared — the enforcement point is the upstream browser-context request interception; what remains is its redirect coverage |
 | 6 | The new package cannot be guaranteed to satisfy the experimental package policy | cleared — the naming, registry entry, and publication rules are identified |
-| 7 | The boundary between existing tests and local user modifications cannot be confirmed | cleared — the working tree's only change is this audit's new untracked directory |
+| 7 | The boundary between existing tests and local user modifications cannot be confirmed | cleared — no tracked source file was modified, and the only local change is this audit's own document directory |
 
 Conditions 3 and 4 share a root cause: the approval service requires an open turn, and a background worker has none.
 
@@ -105,7 +105,7 @@ Phase 1 does not deliver a worker pool, a test report, or a failure analysis. Th
 
 | Plan item | Status |
 |---|---|
-| Local workspace Git state verified | done — the tree carries one untracked directory, this audit's own output |
+| Local workspace Git state verified | done — no tracked source file was modified, and the only local change is this audit's own document directory |
 | Local Node and pnpm environment verified | done — Node below the declared floor, which Phase 1 must correct before the baseline is the release gate |
 | Every relevant package audited file by file | done for the packages that determine the design |
 | Actual MCP tool list and schemas obtained | done — 24 tools measured against the running server |

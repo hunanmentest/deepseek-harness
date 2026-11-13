@@ -21,6 +21,8 @@
 
 由此产生两个后果。方案中的 commit 无法与本工作树核对，因此本次审计中的每条"已核实"都表示"在当前存在的文件中已验证"，而非"已在方案的基准 commit 上验证"。本地 Node 版本低于根 `package.json` 在 `engines` 中要求的 `>=24.9.0`；工作区仍能正常安装与测试，但环境并非清单所声明的环境。
 
+在这次 fetch 之后，仓库历史又被本次审计之外的一次操作改写。方案中点名的 commit 已不在对象库中，承载同一个上游合并的 commit 变成了另一个对象，而本次审计自己的文档目录被作为本地 commit 提交在它之上。被审计的内容不受影响，因为上面每条结论都是从工作树的文件读出的，而不是从某个 commit 读出的，且工作树中被跟踪的源码在整个过程中没有变化。当前本地状态是：一个承载同一合并消息的上游跟踪 commit，一个存放本次审计文档的本地 commit，以及对任何被跟踪源码文件的零改动。
+
 ## 工作区布局
 
 根 `package.json` 与 `pnpm-workspace.yaml` 一致声明工作区覆盖 `vendor/*`、`packages/*/*`、`native/system`、`native/system/packages/*`、`apps/*`、`benchmarks`、`website` 和 `python/sdk-runtime`（`package.json:11-18`，`pnpm-workspace.yaml:1-18`）。`packages/*/*` 是新 TestPilot 包必须采用的形状，因为它把一个包放在一个产品组内。

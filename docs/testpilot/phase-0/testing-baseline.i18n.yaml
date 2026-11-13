@@ -6,26 +6,32 @@
   en: 147ac262e0e14ac0
   zh: f3cbbd82d985c5c4
 /testpilot-phase-0-testing-baseline/execution-environment:
-  en: 8609b7eb480de5be
-  zh: 85ad7fb942c93f54
+  en: ef62bccd0e9307d5
+  zh: d4861b3229d7d498
 /testpilot-phase-0-testing-baseline/dependency-restoration:
-  en: bb9874d720cb0009
-  zh: b5969d63739b1b7d
+  en: c03793304161aeb4
+  zh: 599617c71aed63da
 /testpilot-phase-0-testing-baseline/the-unit-baseline:
-  en: f2e07c1061a1c4a1
-  zh: 0b4572564613d703
+  en: 9041afa8a988e9a5
+  zh: 9f2428fe0eb0c029
 /testpilot-phase-0-testing-baseline/the-upstream-browser-baseline:
-  en: edabe904bfe04d5d
-  zh: 063068b23a658e0a
+  en: edc25a74194f9a82
+  zh: 23f31120306788e5
 /testpilot-phase-0-testing-baseline/what-the-existing-suites-already-prove:
   en: 071f5443829e85e7
   zh: 258d9071bc03b831
 /testpilot-phase-0-testing-baseline/gaps-phase-1-must-close:
   en: f3457cfc964b2960
   zh: c2a7cb71415458cf
+/testpilot-phase-0-testing-baseline/the-documentation-gates:
+  en: 8cb8457a315c31c0
+  zh: ace27b381c402f29
+/testpilot-phase-0-testing-baseline/the-runtime-correction:
+  en: 6d463cfe5768eaca
+  zh: 7501b5beb34a1b77
 /testpilot-phase-0-testing-baseline/commands-not-run:
-  en: 5922b9833874bed9
-  zh: 135d69e50c807e41
+  en: 22e421b53fef8aec
+  zh: 0aef6119300d1033
 /testpilot-phase-0-testing-baseline/further-exploration:
   en: 5d34417fe9151aad
   zh: 14fb5c8375ba8e12

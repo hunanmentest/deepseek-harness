@@ -4,22 +4,22 @@
 #   pnpm run verify-translation-pairing --write docs/testpilot/phase-0/README.md
 /testpilot-phase-0-source-audit-and-technical-baseline:
   en: 4a2622becb655c32
-  zh: 4e55ec631e34cd4b
+  zh: a335f68d7b73f4f3
 /testpilot-phase-0-source-audit-and-technical-baseline/verdict:
-  en: 3de00539309bd96b
-  zh: 45677bcd4c4ae0eb
+  en: 669f1828a6f59043
+  zh: de6e0c43a4f99705
 /testpilot-phase-0-source-audit-and-technical-baseline/what-the-audit-established:
-  en: dc5f88bc0c9ceffb
-  zh: 6bffeceea43ea730
+  en: 258d2e85f24c0af0
+  zh: 00ec73de716bfc27
 /testpilot-phase-0-source-audit-and-technical-baseline/the-audit-documents:
-  en: 9b90bca5d2ab52ec
-  zh: 4b242f778033f658
+  en: e9c14494a9cfb3c9
+  zh: 9c8855f75d72a55d
 /testpilot-phase-0-source-audit-and-technical-baseline/evidence-convention:
-  en: f7aadbd1e6938e2f
-  zh: 53e2cfc046c08443
+  en: 5ca6f7699e12b850
+  zh: 842fac215e08d4f9
 /testpilot-phase-0-source-audit-and-technical-baseline/phase-1-boundary:
-  en: 70e1050b619483cc
-  zh: fef36819623765a8
+  en: 4dad81380e8d7932
+  zh: 1f1dbfdf188c7eb3
 /testpilot-phase-0-source-audit-and-technical-baseline/further-exploration:
-  en: 19b5b479590bf48f
-  zh: 4d0e3f321e3ca089
+  en: b1612ea8bdcfcd6f
+  zh: b9b3c79814adf7c3
