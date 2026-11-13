@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "TestPilot Web-Qualitätsplattform",
+    "description": "Führt strukturierte Web-Qualitätsprüfungen mit isolierten Browser-Beweisen, laufbezogener Freigabe riskanter Aktionen, Richtlinien für Ursprünge und Verbindungsziele, Qualitäts-Gates, JSON-, JUnit-, HTML- und Markdown-Berichten sowie Health-Metriken aus.",
+    "detail": "docs/DETAIL.md"
+  }
+}

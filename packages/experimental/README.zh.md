@@ -43,6 +43,7 @@ kind: "package-group"
 | [`plugin-recommendations`](plugin-recommendations/README.zh.md) | 在对话中针对明确需求推荐官方插件 | `ctx.pluginRecommendations` |
 | [`client-ui-plugin-recommendations`](client-ui-plugin-recommendations/README.zh.md) | 官方插件卡片正文：目录文本与启用 | — |
 | [`personalized-recommendations`](personalized-recommendations/README.zh.md) | 默认禁用的个性化页面、插件推荐及其操作卡片组合 | — |
+| [`testpilot`](testpilot/README.zh.md) | 可选 Web 质量平台 bundle：隔离证据、运行级授权、来源与连接策略、质量门禁、报告与健康指标 | — |
 | [`tool-session-query`](tool-session-query/README.zh.md) | 按工作区授权的模型会话搜索、追踪与事件读取 | — |
 | [`session-search`](session-search/README.zh.md) | 可选实验性全局会话搜索工具 | — |
 | [`ralph-bundle`](ralph-bundle/README.zh.md) | 带隔离 workflow 引擎的可选重复委派 | — |

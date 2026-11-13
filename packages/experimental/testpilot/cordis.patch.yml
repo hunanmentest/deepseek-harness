@@ -1,0 +1,12 @@
+- insert:
+    - id: testpilot
+      name: '@deepseek-ai/dsh-testpilot'
+      config:
+        dataDir: ''
+        allowedOrigins: []
+        policyVersion: '1'
+        approvalTtlMs: 900000
+        snapshotTtlMs: 300000
+        workerPoolSize: 2
+        retentionDays: 30
+        metricsEnabled: true

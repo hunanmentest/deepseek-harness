@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "TestPilot: plataforma de qualidade Web",
+    "description": "Executa verificações estruturadas de qualidade Web com evidências isoladas do navegador, aprovação por execução para ações de alto risco, políticas de origem e de host de conexão, portões de qualidade, relatórios JSON, JUnit, HTML e Markdown, e métricas de integridade.",
+    "detail": "docs/DETAIL.md"
+  }
+}

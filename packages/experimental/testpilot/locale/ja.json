@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "TestPilot Web 品質プラットフォーム",
+    "description": "分離されたブラウザー証跡、実行単位の高リスク操作承認、オリジンと接続先ホストのポリシー、品質ゲート、JSON、JUnit、HTML、Markdown レポート、およびヘルス指標で構造化された Web 品質検査を実行します。",
+    "detail": "docs/DETAIL.md"
+  }
+}

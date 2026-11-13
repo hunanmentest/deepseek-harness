@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "TestPilot Web 质量平台",
+    "description": "以隔离的浏览器证据、按运行授权的高风险动作审批、来源与连接主机策略、质量门禁、JSON、JUnit、HTML 与 Markdown 报告，以及健康指标，执行结构化的 Web 质量检查。",
+    "detail": "docs/DETAIL.zh.md"
+  }
+}

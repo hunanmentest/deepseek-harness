@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "TestPilot Web quality platform",
+    "description": "Runs structured Web quality checks with isolated browser evidence, run-scoped approval for high-risk actions, an origin and attach policy, quality gates, JSON, JUnit, HTML and Markdown reports, and health metrics.",
+    "detail": "docs/DETAIL.md"
+  }
+}
