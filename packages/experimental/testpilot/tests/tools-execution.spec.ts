@@ -55,8 +55,10 @@ function call(ctx: Context, name: string, args: unknown) {
   })
 }
 
+type ExecResult = Awaited<ReturnType<typeof executeToolFixture>>
 /** The canonical tool value declared by every testpilot tool is a JSON string. */
-function toolText(result: { readonly value: unknown }): string {
+function toolText(result: ExecResult): string {
+  if (result.isError) throw new Error('expected a successful tool result')
   if (typeof result.value !== 'string') throw new Error('expected a string tool value')
   return result.value
 }

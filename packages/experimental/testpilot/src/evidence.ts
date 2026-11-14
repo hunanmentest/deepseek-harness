@@ -100,7 +100,7 @@ function containsSensitive(content: Uint8Array): boolean {
  * `byteSize` is taken from the measured content. `redacted` marks a text reference whose
  * content matched a sensitive pattern; the host must redact those bytes before persisting them.
  */
-export function createEvidenceRef(input: Omit<EvidenceRef, 'id' | 'createdAtMs' | 'sha256' | 'redacted'> & {
+export function createEvidenceRef(input: Omit<EvidenceRef, 'id' | 'createdAtMs' | 'sha256' | 'redacted' | 'byteSize'> & {
   content: Uint8Array
   nowMs?: number
 }): EvidenceRef {

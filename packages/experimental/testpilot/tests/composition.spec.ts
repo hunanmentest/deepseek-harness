@@ -53,7 +53,7 @@ describe('publishable bundle contract (static)', () => {
     expect(manifest.name).toBe('@deepseek-ai/dsh-testpilot')
     expect(manifest).not.toHaveProperty('private')
     expect((manifest.publishConfig as Record<string, unknown>).access).toBe('public')
-    expect((manifest.dsh as Record<string, Record<string, unknown>>).bundle.patch).toBe('./cordis.patch.yml')
+    expect((manifest.dsh as { bundle: { patch: string } }).bundle.patch).toBe('./cordis.patch.yml')
     expect(manifest.main).toBe('lib/index.js')
     expect(manifest.type).toBe('module')
     const dependencies = manifest.dependencies as Record<string, string>
