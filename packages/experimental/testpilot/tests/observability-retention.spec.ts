@@ -94,15 +94,49 @@ describe('retention', () => {
     expect(upgradeRunRecord({ schemaVersion: 2, id: 1 }).ok).toBe(false)
   })
 
+  it('treats a record without a schema version as v1 and defaults every missing field', () => {
+    const implicit = upgradeRunRecord({ id: 'run_z', projectId: 'proj_z', planId: 'plan_z' })
+    expect(implicit.ok).toBe(true)
+    if (implicit.ok) {
+      expect(implicit.value.status).toBe('queued')
+      expect(implicit.value.mode).toBe('full')
+      expect(implicit.value.results).toEqual([])
+      expect(implicit.value.correlationId).toBe('corr_run_z')
+    }
+  })
+
+  it('keeps every field of a complete record that already carries them', () => {
+    const full = upgradeRunRecord({
+      schemaVersion: 1, id: 'run_x', projectId: 'proj_x', planId: 'plan_x', status: 'running',
+      mode: 'smoke', commitSha: 'abc1234', configDigest: 'd1', policyVersion: '9',
+      createdAtMs: 1, updatedAtMs: 2, finishedAtMs: 3, results: [], correlationId: 'corr_x',
+    })
+    expect(full.ok).toBe(true)
+    if (full.ok) {
+      expect(full.value.status).toBe('running')
+      expect(full.value.mode).toBe('smoke')
+      expect(full.value.commitSha).toBe('abc1234')
+      expect(full.value.configDigest).toBe('d1')
+      expect(full.value.policyVersion).toBe('9')
+      expect(full.value.createdAtMs).toBe(1)
+      expect(full.value.updatedAtMs).toBe(2)
+      expect(full.value.finishedAtMs).toBe(3)
+      expect(full.value.correlationId).toBe('corr_x')
+      expect(full.value.results).toEqual([])
+    }
+  })
+
   it('purges settled runs past the window and keeps recent ones', async () => {
     const store = createStore(createMemoryAdapter())
     const old = { ...run(1_000), status: 'passed' as const, finishedAtMs: 1_000, updatedAtMs: 1_000 }
+    const unFinished = { ...run(2_000), status: 'queued' as const, finishedAtMs: null, updatedAtMs: 2_000 }
     const recent = { ...run(2_900_000_000), status: 'passed' as const, finishedAtMs: 2_900_000_000, updatedAtMs: 2_900_000_000 }
     await store.putRun(old)
+    await store.putRun(unFinished)
     await store.putRun(recent)
     await store.putGate({ runId: old.id, verdict: 'pass', reasons: [], evaluatedAtMs: 1_000, durationMs: 1, thresholds: { maxFailureRate: 0, minEvidenceRate: 1, requireP0Pass: true } })
     const result = await purgeExpiredRuns(store, 3_000_000_000, 30)
-    expect(result.deleted).toEqual([old.id])
+    expect(result.deleted).toEqual([old.id, unFinished.id])
     expect(result.kept).toBe(1)
     expect(result.cutoffMs).toBe(3_000_000_000 - 30 * 86_400_000)
     expect(await store.getRun(old.id)).toBeNull()

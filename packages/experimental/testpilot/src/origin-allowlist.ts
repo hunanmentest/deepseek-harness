@@ -43,11 +43,20 @@ function isMetadataHost(host: string): boolean {
   return METADATA_HOSTS.includes(host.trim().toLowerCase().replace(/\.$/, ''))
 }
 
-interface Normalized {
-  readonly ok: boolean
+interface NormalizedOk {
+  readonly ok: true
+  readonly reason: 'allowed'
+  readonly origin: string
+}
+
+interface NormalizedBad {
+  readonly ok: false
   readonly reason: string
   readonly origin: string | null
 }
+
+/** A pass verdict always carries its normalized origin; failures may or may not. */
+type Normalized = NormalizedOk | NormalizedBad
 
 /** Rejects credentials, non-http(s), trailing dots, IDN and metadata hosts before matching. */
 function normalize(raw: unknown): Normalized {
@@ -82,7 +91,7 @@ export function createOriginPolicy(allowedOrigins: readonly string[]): OriginPol
   const entries: string[] = []
   for (const raw of allowedOrigins) {
     const normalized = normalize(raw)
-    if (!normalized.ok || normalized.origin === null) continue
+    if (!normalized.ok) continue
     if (!entries.includes(normalized.origin)) entries.push(normalized.origin)
   }
   const frozen: readonly string[] = Object.freeze([...entries])
@@ -95,7 +104,7 @@ export function createOriginPolicy(allowedOrigins: readonly string[]): OriginPol
     if (!normalized.ok) {
       return { allowed: false, reason: normalized.reason, normalized: normalized.origin }
     }
-    if (normalized.origin === null || !frozen.includes(normalized.origin)) {
+    if (!frozen.includes(normalized.origin)) {
       return { allowed: false, reason: 'origin-not-allowlisted', normalized: normalized.origin }
     }
     return { allowed: true, reason: 'allowed', normalized: normalized.origin }

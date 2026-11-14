@@ -65,6 +65,24 @@ describe('quality gate', () => {
     expect(gateExitCode('warn', true)).toBe(1)
     expect(gateExitCode('fail')).toBe(1)
   })
+
+  it('rates a settled run with no cases as warned, never as passed', () => {
+    const running = transitionRun(baseRun(), 'running', 2_000)
+    if (!running.ok) throw new Error('fixture transition failed')
+    const done = transitionRun(running.value, 'passed', 3_000)
+    if (!done.ok) throw new Error('fixture settle failed')
+    const gate = evaluateQualityGate({ run: done.value, thresholds: DEFAULT_THRESHOLDS, priorities: {}, nowMs: 4_000, durationMs: 0 })
+    expect(gate.verdict).toBe('warn')
+    expect(gate.reasons.some(reason => reason.includes('evidence rate'))).toBe(true)
+  })
+
+  it('keeps a fail verdict when warn-level reasons stack on top of it', () => {
+    const run = settled('failed', result({ status: 'failed', evidenceIds: [], error: 'boom' }))
+    const gate = evaluateQualityGate({ run, thresholds: DEFAULT_THRESHOLDS, priorities: {}, nowMs: 4_000, durationMs: 0 })
+    expect(gate.verdict).toBe('fail')
+    expect(gate.reasons.some(reason => reason.includes('failed case has no evidence'))).toBe(true)
+    expect(gate.reasons.filter(reason => reason.includes('evidence rate'))).toHaveLength(1)
+  })
 })
 
 describe('reports', () => {
@@ -76,8 +94,9 @@ describe('reports', () => {
     const all = renderAllReports(input)
     expect(Object.keys(all).sort()).toEqual(['html', 'json', 'junit', 'markdown'])
     expect(renderReport('json', input)).toBe(all.json)
-    expect(JSON.parse(all.json).ok).toBe(true)
-    expect(JSON.parse(all.json).data.run.id).toBe(run.id)
+    const parsed = JSON.parse(all.json) as { ok: boolean; data: { run: { id: string }; evidenceMissing: boolean } }
+    expect(parsed.ok).toBe(true)
+    expect(parsed.data.run.id).toBe(run.id)
     expect(all.junit).toContain('<testsuite')
     expect(all.junit).toContain('tests="1"')
     expect(all.markdown).toContain('## Case results')
@@ -107,5 +126,34 @@ describe('reports', () => {
     expect(body).toContain('oops &amp; &lt;bad&gt;')
     const skipped = settled('passed', result({ status: 'skipped' }))
     expect(renderReport('junit', { ...input, run: skipped })).toContain('<skipped/>')
+  })
+
+  it('falls back to defaults for bare failures, unset durations and unevaluated gates', () => {
+    const bare = settled('failed', result({ status: 'failed', error: null, failureClass: null, durationMs: null }))
+    const noGate = { run: bare, project: null, gate: null, evidence: [evidence(bare)], generatedAtMs: 5_000 }
+    const junit = renderReport('junit', noGate)
+    expect(junit).toContain('<failure message="case failed">unclassified</failure>')
+    expect(junit).toContain('time="0.000"')
+    // A queued run has no finishedAtMs; JUnit then measures from updatedAtMs.
+    expect(renderReport('junit', { ...noGate, run: baseRun() })).toContain('tests="0"')
+    const html = renderReport('html', noGate)
+    expect(html).toContain('not-evaluated')
+    expect(html).toContain('No gate evaluation is stored for this run.')
+    const markdown = renderReport('markdown', noGate)
+    expect(markdown).toContain('not-evaluated')
+    expect(markdown).toContain('No gate evaluation is stored for this run.')
+  })
+
+  it('badges warn and fail verdicts and an explicit failure class in HTML', () => {
+    const warnRun = settled('passed', result({ evidenceIds: [] }))
+    const warnGate = evaluateQualityGate({ run: warnRun, thresholds: DEFAULT_THRESHOLDS, priorities: {}, nowMs: 4_000, durationMs: 0 })
+    expect(renderReport('html', { ...input, run: warnRun, gate: warnGate })).toContain('badge warn')
+    const failRun = settled('failed', result({ status: 'failed', failureClass: 'flaky' }))
+    const failGate = evaluateQualityGate({ run: failRun, thresholds: DEFAULT_THRESHOLDS, priorities: {}, nowMs: 4_000, durationMs: 0 })
+    const failHtml = renderReport('html', { ...input, run: failRun, gate: failGate })
+    expect(failHtml).toContain('badge fail')
+    expect(failHtml).toContain('flaky')
+    const warnMarkdown = renderReport('markdown', { ...input, run: warnRun, gate: warnGate })
+    expect(warnMarkdown).toContain('Gate: warn')
   })
 })

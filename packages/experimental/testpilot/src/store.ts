@@ -92,17 +92,24 @@ export function createFileAdapter(rootDir: string): StoreAdapter {
 export function createMemoryAdapter(): StoreAdapter {
   const values = new Map<string, string>()
   return {
-    ready: async () => true,
-    read: async key => values.get(key) ?? null,
-    write: async (key, value) => { values.set(key, value) },
-    remove: async (key) => { values.delete(key) },
-    list: async prefix => [...values.keys()].filter(key => key.startsWith(`${prefix}/`)),
+    ready: () => Promise.resolve(true),
+    read: key => Promise.resolve(values.get(key) ?? null),
+    write: (key, value) => {
+      values.set(key, value)
+      return Promise.resolve()
+    },
+    remove: (key) => {
+      values.delete(key)
+      return Promise.resolve()
+    },
+    list: prefix => Promise.resolve([...values.keys()].filter(key => key.startsWith(`${prefix}/`))),
   }
 }
 
-function parse<T>(raw: string | null): T | null {
+/** Parse one stored document; an absent document or an explicit null body both yield null. */
+function parseRecord(raw: string | null): unknown {
   if (raw === null) return null
-  return JSON.parse(raw) as T
+  return JSON.parse(raw)
 }
 
 /** One authoritative store behind the tools; all durable state passes through it. */
@@ -111,7 +118,7 @@ export function createStore(adapter: StoreAdapter): TestPilotStore {
     const keys = await adapter.list(prefix)
     const values: T[] = []
     for (const key of keys) {
-      const value = parse<T>(await adapter.read(key))
+      const value = parseRecord(await adapter.read(key)) as T | null
       if (value !== null) values.push(value)
     }
     return values
@@ -119,13 +126,22 @@ export function createStore(adapter: StoreAdapter): TestPilotStore {
   return {
     ready: () => adapter.ready(),
     putProject: value => adapter.write(`projects/${value.id}`, JSON.stringify(value)),
-    getProject: async id => parse<TestProject>(await adapter.read(`projects/${id}`)),
+    getProject: async (id) => {
+      const raw = await adapter.read(`projects/${id}`)
+      return parseRecord(raw) as TestProject | null
+    },
     listProjects: () => getAll<TestProject>('projects'),
     putRun: value => adapter.write(`runs/${value.id}`, JSON.stringify(value)),
-    getRun: async id => parse<TestRun>(await adapter.read(`runs/${id}`)),
+    getRun: async (id) => {
+      const raw = await adapter.read(`runs/${id}`)
+      return parseRecord(raw) as TestRun | null
+    },
     listRuns: () => getAll<TestRun>('runs'),
     putGate: value => adapter.write(`gates/${value.runId}`, JSON.stringify(value)),
-    getGate: async runId => parse<QualityGate>(await adapter.read(`gates/${runId}`)),
+    getGate: async (runId) => {
+      const raw = await adapter.read(`gates/${runId}`)
+      return parseRecord(raw) as QualityGate | null
+    },
     putEvidence: value => adapter.write(`evidence/${value.id}`, JSON.stringify(value)),
     listEvidence: async runId => (await getAll<EvidenceLink>('evidence')).filter(item => item.runId === runId),
     appendAudit: value => adapter.write(`audit/${value.id}`, JSON.stringify(value)),

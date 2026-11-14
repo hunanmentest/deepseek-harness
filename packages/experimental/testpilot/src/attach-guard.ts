@@ -51,6 +51,7 @@ export function checkAttachEndpoint(raw: unknown, options?: {
   if (parsed.username.length > 0 || parsed.password.length > 0) return deny('embedded-credentials')
   if (parsed.hostname.endsWith('.')) return deny('trailing-dot-host')
   const host = normalizeHost(parsed.hostname)
+  /* v8 ignore next -- special-scheme URLs always carry a non-empty host; the guard only covers defensive parser changes */
   if (host.length === 0) return deny('missing-hostname')
   if (host.includes('xn--') || /[^\x00-\x7f]/.test(host)) return deny('idn-host-rejected')
   if (isMetadataHost(host)) return deny('metadata-endpoint-rejected')

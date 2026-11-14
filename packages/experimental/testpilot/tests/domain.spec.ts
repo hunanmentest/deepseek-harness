@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { resolve } from 'node:path'
 import {
-  correlationId, createProject, createRun, err, newId, ok, planId, projectId,
+  caseId, correlationId, createProject, createRun, err, newId, ok, planId, projectId,
   recordCaseResult, stableDigest, transitionRun, validateProjectAgainstWorkspace,
 } from '../src/domain.ts'
 import { configDigest, resolveDataDir, Config } from '../src/config.ts'
@@ -36,6 +36,7 @@ describe('identity and results', () => {
   it('issues unguessable unique ids with a stable prefix', () => {
     expect(projectId().startsWith('proj_')).toBe(true)
     expect(projectId()).not.toBe(projectId())
+    expect(caseId().startsWith('case_')).toBe(true)
     expect(correlationId().startsWith('corr_')).toBe(true)
     expect(newId<'X'>('snap').startsWith('snap_')).toBe(true)
   })
@@ -45,7 +46,7 @@ describe('identity and results', () => {
     expect(err('bad', 'reason', 'corr_1')).toEqual({
       ok: false, error: { code: 'bad', message: 'reason', retryable: false, correlationId: 'corr_1' },
     })
-    expect(err('busy', 'retry', 'corr_2', true).ok === false).toBe(true)
+    expect(err('busy', 'retry', 'corr_2', true)).toMatchObject({ ok: false })
   })
 
   it('hashes canonically regardless of key order', () => {
@@ -54,10 +55,25 @@ describe('identity and results', () => {
   })
 
   it('derives a stable configuration digest and resolves the default data dir', () => {
-    expect(configDigest(config)).toBe(configDigest({ ...config }))
-    expect(configDigest({ ...config, policyVersion: '2' })).not.toBe(configDigest(config))
+    const literal: ConfigShape = {
+      dataDir: '', allowedOrigins: ['https://example.com'], policyVersion: '1',
+      approvalTtlMs: 900_000, snapshotTtlMs: 300_000, workerPoolSize: 2,
+      retentionDays: 30, metricsEnabled: true,
+    }
+    expect(configDigest(config)).toBe(configDigest(literal))
+    const versioned: ConfigShape = {
+      dataDir: '', allowedOrigins: ['https://example.com'], policyVersion: '2',
+      approvalTtlMs: 900_000, snapshotTtlMs: 300_000, workerPoolSize: 2,
+      retentionDays: 30, metricsEnabled: true,
+    }
+    expect(configDigest(config)).not.toBe(configDigest(versioned))
     expect(resolveDataDir(config, '/workspace')).toBe('/workspace/.testpilot')
-    expect(resolveDataDir({ ...config, dataDir: '/data/tp' }, '/workspace')).toBe('/data/tp')
+    const relocated: ConfigShape = {
+      dataDir: '/data/tp', allowedOrigins: ['https://example.com'], policyVersion: '1',
+      approvalTtlMs: 900_000, snapshotTtlMs: 300_000, workerPoolSize: 2,
+      retentionDays: 30, metricsEnabled: true,
+    }
+    expect(resolveDataDir(relocated, '/workspace')).toBe('/data/tp')
     expect(Config).toBeDefined()
   })
 })

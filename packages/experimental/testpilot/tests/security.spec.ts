@@ -6,7 +6,8 @@ import { checkAttachEndpoint } from '../src/attach-guard.ts'
 import { buildEvidenceBundle, createEvidenceRef, redactText } from '../src/evidence.ts'
 import { evaluateAction, grantParameters } from '../src/policy.ts'
 import { createRun, planId, projectId } from '../src/domain.ts'
-import type { EvidenceRef, RiskVerdict } from '../src/types.ts'
+import type { RiskVerdict } from '../src/risk.ts'
+import type { EvidenceRef } from '../src/evidence.ts'
 
 const high: RiskVerdict = { tool: 'browser_evaluate', risk: 'code-execution', highRisk: true, reasons: ['code-argument'] }
 const read: RiskVerdict = { tool: 'browser_snapshot', risk: 'read', highRisk: false, reasons: [] }
@@ -34,6 +35,9 @@ describe('risk classification', () => {
     const verdict = classifyToolCall('browser_click', { url: 'https://elsewhere.test/SECRET-PAYLOAD' })
     expect(JSON.stringify(verdict)).not.toContain('SECRET-PAYLOAD')
     expect(classifyToolCall('browser_snapshot', 'not-an-object').reasons).toContain('invalid-args')
+    // An unparseable url argument is skipped; a non-http url never becomes cross-origin.
+    expect(classifyToolCall('browser_click', { url: ':: not a url ::' }).risk).toBe('mutate')
+    expect(classifyToolCall('browser_click', { url: 'ftp://example.test/x' }).highRisk).toBe(false)
   })
 })
 
@@ -81,6 +85,44 @@ describe('run-scoped approval gate', () => {
     expect(gate.assertAllowed(base).ok).toBe(false)
     expect(gate.consume('grant_missing', { runId: 'run_1', parameters: binding, nowMs: 1_000 }).ok).toBe(false)
   })
+
+  it('falls back to the system clock when no clock, a non-finite clock or a throwing clock is supplied', () => {
+    const before = Date.now()
+    const defaults = createApprovalGate()
+    expect(defaults.issue({ runId: 'run_1', projectId: 'proj_1', policyVersion: '1', parameters: binding, ttlMs: 1_000 }).issuedAtMs)
+      .toBeGreaterThanOrEqual(before)
+    const nan = createApprovalGate({ clock: () => Number.NaN })
+    expect(nan.issue({ runId: 'run_1', projectId: 'proj_1', policyVersion: '1', parameters: binding, ttlMs: 1_000 }).issuedAtMs)
+      .toBeGreaterThanOrEqual(before)
+    const throwing = createApprovalGate({ clock: () => { throw new Error('clock broke') } })
+    expect(throwing.issue({ runId: 'run_1', projectId: 'proj_1', policyVersion: '1', parameters: binding, ttlMs: 1_000 }).issuedAtMs)
+      .toBeGreaterThanOrEqual(before)
+    const explicit = createApprovalGate({ clock: () => 5_000 })
+    expect(explicit.issue({ runId: 'run_1', projectId: 'proj_1', policyVersion: '1', parameters: binding, ttlMs: 1_000, nowMs: Number.NaN }).issuedAtMs)
+      .toBe(5_000)
+  })
+
+  it('never issues a matching digest for unbindable parameters', () => {
+    const gate = createApprovalGate({ clock: () => 1_000 })
+    const circular: Record<string, unknown> = {}
+    circular.self = circular
+    const grant = gate.issue({ runId: 'run_1', projectId: 'proj_1', policyVersion: '1', parameters: circular, ttlMs: 5_000, nowMs: 1_000 })
+    expect(grant.parameterDigest).toMatch(/^unbindable:/)
+    expect(gate.consume(grant.grantId, { runId: 'run_1', parameters: circular, nowMs: 1_100 }))
+      .toMatchObject({ ok: false, code: 'mismatch' })
+    const unbindableBinding = gate.issue({ runId: '', projectId: '', policyVersion: '', parameters: binding, ttlMs: 1_000, nowMs: 1_000 })
+    expect(unbindableBinding.parameterDigest).toMatch(/^unbindable:/)
+  })
+
+  it('issues grants that are born expired for a non-positive ttl and clocks consume from the injected clock', () => {
+    const gate = createApprovalGate({ clock: () => 1_000 })
+    const grant = gate.issue({ runId: 'run_1', projectId: 'proj_1', policyVersion: '1', parameters: binding, ttlMs: 0, nowMs: 1_000 })
+    expect(grant.expiresAtMs).toBe(grant.issuedAtMs)
+    expect(gate.assertAllowed({ grantId: grant.grantId, runId: 'run_1', tool: 'browser_evaluate', args: binding, verdict: high }))
+      .toMatchObject({ ok: false, code: 'expired' })
+    expect(gate.consume(grant.grantId, { runId: 'run_1', parameters: binding }))
+      .toMatchObject({ ok: false, code: 'expired' })
+  })
 })
 
 describe('origin and attach policy', () => {
@@ -93,6 +135,7 @@ describe('origin and attach policy', () => {
     expect(policy.checkRedirect('https://evil.test', 'https://example.com').reason).toContain('redirect-source')
     expect(policy.checkRedirect('https://example.com', 'https://example.com').allowed).toBe(true)
     expect(policy.entries).toEqual(['https://example.com'])
+    expect(createOriginPolicy(['https://a.test', 'https://a.test', 'ftp://bad']).entries).toEqual(['https://a.test'])
   })
 
   it('rejects malformed, credential-bearing, non-http and private hosts', () => {
@@ -112,6 +155,20 @@ describe('origin and attach policy', () => {
     expect(isPrivateHost('169.254.169.254')).toBe(true)
     expect(isPrivateHost('metadata.google.internal')).toBe(true)
     expect(isPrivateHost('8.8.8.8')).toBe(false)
+    expect(isPrivateHost('')).toBe(true)
+    expect(isPrivateHost('localhost')).toBe(true)
+    expect(isPrivateHost('app.localhost')).toBe(true)
+    expect(isPrivateHost('db.internal')).toBe(true)
+    expect(isPrivateHost('printer.local')).toBe(true)
+    expect(isPrivateHost('host.localdomain')).toBe(true)
+    expect(isPrivateHost('0.0.0.0')).toBe(true)
+    expect(isPrivateHost('::')).toBe(true)
+    expect(isPrivateHost('::1')).toBe(true)
+    expect(isPrivateHost('[::1]')).toBe(true)
+    expect(isPrivateHost('[0.0.0.0]')).toBe(true)
+    expect(isPrivateHost('fd00::1')).toBe(true)
+    expect(isPrivateHost('fe80::1')).toBe(true)
+    expect(isPrivateHost('::ffff:127.0.0.1')).toBe(true)
   })
 
   it('allows loopback only when explicitly requested and never allows metadata endpoints', () => {
@@ -159,6 +216,19 @@ describe('evidence', () => {
     expect(bundle.refs).toHaveLength(1)
     expect(bundle.missing).toEqual(['screenshot', 'network'])
   })
+
+  it('timestamps new evidence from the system clock and deduplicates required kinds', () => {
+    const before = Date.now()
+    const ref = createEvidenceRef({
+      kind: 'screenshot', attachmentId: 'att_2', content: Buffer.from('pixels'),
+      runId: 'run_1', caseId: 'case_1',
+    })
+    expect(ref.createdAtMs).toBeGreaterThanOrEqual(before)
+    const duplicated = buildEvidenceBundle('run_1', 'case_1', [ref], ['screenshot', 'screenshot'])
+    expect(duplicated.missing).toEqual([])
+    const duplicatedMissing = buildEvidenceBundle('run_1', 'case_1', [], ['trace', 'trace'])
+    expect(duplicatedMissing.missing).toEqual(['trace'])
+  })
 })
 
 describe('pre-dispatch policy', () => {
@@ -191,5 +261,16 @@ describe('pre-dispatch policy', () => {
     expect(evaluateAction(services, { ...base, tool: 'browser_snapshot', url: 'https://example.com', redirectTo: 'https://evil.test' }).code).toBe('origin-denied')
     expect(evaluateAction(services, { ...base, tool: 'browser_attach' }).code).toBe('attach-denied')
     expect(evaluateAction(services, { ...base, tool: 'browser_snapshot', attachEndpoint: 'http://127.0.0.1:9222' }).code).toBe('attach-denied')
+  })
+
+  it('allows an allowlisted navigation and a cross-origin redirect that stays inside the allowlist', () => {
+    expect(evaluateAction(services, { ...base, tool: 'browser_snapshot', url: 'https://example.com' }).code).toBe('allowed')
+    expect(evaluateAction(services, { ...base, tool: 'browser_snapshot', url: 'https://example.com', redirectTo: 'https://example.com' }).code).toBe('allowed')
+  })
+
+  it('admits a public attach endpoint and covers the subsequent call with the grant', () => {
+    expect(evaluateAction(services, {
+      ...base, tool: 'browser_attach', attachEndpoint: 'https://chrome.test:9222', grantId: grant.grantId,
+    }).code).toBe('allowed-with-grant')
   })
 })

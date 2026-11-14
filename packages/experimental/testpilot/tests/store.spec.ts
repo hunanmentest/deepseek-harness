@@ -1,5 +1,5 @@
 import { describe, expect, it, onTestFinished } from 'vitest'
-import { mkdtemp, readFile, readdir, rm } from 'node:fs/promises'
+import { mkdir, mkdtemp, readFile, readdir, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
 import { createFileAdapter, createMemoryAdapter, createStore } from '../src/store.ts'
@@ -115,5 +115,26 @@ describe('file adapter', () => {
     await expect(adapter.write('projects/../secrets', '{}')).rejects.toThrow(/invalid store key/)
     await expect(adapter.remove('/etc/passwd')).rejects.toThrow(/invalid store key/)
     await expect(adapter.list('../')).rejects.toThrow(/invalid store prefix/)
+  })
+
+  it('surfaces filesystem failures and skips null documents in aggregates', async () => {
+    const root = await mkdtemp(join(tmpdir(), 'dsh-testpilot-fail-'))
+    onTestFinished(async () => { await rm(root, { recursive: true, force: true }) })
+    const adapter = createFileAdapter(root)
+    const store = createStore(adapter)
+    await adapter.ready()
+    // A document that parses to null is skipped by list aggregates.
+    await adapter.write('projects/ghost', 'null')
+    expect(await store.listProjects()).toEqual([])
+    // A file where a directory belongs makes list() fail instead of guessing.
+    await writeFile(join(root, 'gates'), 'not a directory', 'utf8')
+    await expect(adapter.list('gates')).rejects.toThrow()
+    // A directory where a document belongs makes read() fail...
+    await mkdir(join(root, 'runs', 'collide.json'), { recursive: true })
+    await expect(adapter.read('runs/collide')).rejects.toThrow()
+    // ...and write() removes its temp file before surfacing the rename failure.
+    await expect(adapter.write('runs/collide', '{}')).rejects.toThrow()
+    const temps = (await readdir(join(root, 'runs'))).filter(name => name.endsWith('.tmp'))
+    expect(temps).toEqual([])
   })
 })

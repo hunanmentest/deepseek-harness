@@ -39,6 +39,7 @@ describe('snapshot registry', () => {
     expect(registry.get(record.id, Date.now() + 5_000).ok).toBe(false)
     expect(registry.size(Date.now() + 5_000)).toBe(0)
     const another = capture(registry)
+    expect(registry.prune(Date.now())).toBe(0)
     expect(registry.prune(Date.now() + 5_000)).toBe(1)
     expect(registry.get(another.id, Date.now()).ok).toBe(false)
     const third = capture(registry)

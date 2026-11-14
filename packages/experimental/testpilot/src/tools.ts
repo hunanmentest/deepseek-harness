@@ -15,7 +15,7 @@ import type { OriginPolicy } from './origin-allowlist.ts'
 import { evaluateAction, grantParameters } from './policy.ts'
 import { DEFAULT_THRESHOLDS, evaluateQualityGate, gateExitCode } from './quality-gate.ts'
 import { renderAllReports } from './reporting.ts'
-import type { HealthStatus, PlanId, ReportFormat } from './types.ts'
+import type { HealthStatus, PlanId } from './types.ts'
 
 export interface ToolServices {
   readonly config: Config
@@ -98,7 +98,7 @@ export function registerTestPilotTools(ctx: Context, services: ToolServices): vo
       const created = createRun({
         projectId: project.id,
         planId: args.planId as PlanId,
-        mode: (args.mode ?? 'full') as 'full' | 'smoke' | 'risk_based',
+        mode: args.mode ?? 'full',
         commitSha: args.commitSha ?? null,
         configDigest: services.digest,
         policyVersion: config.policyVersion,
@@ -147,20 +147,20 @@ export function registerTestPilotTools(ctx: Context, services: ToolServices): vo
       refsJson: { type: 'string', required: true, description: 'JSON object mapping @eN to an element description.' },
     },
     output: { schema: { type: 'string' }, render: (_args, value) => [{ type: 'text', text: value }] },
-    async execute(args) {
+    execute(args) {
       const corr = correlationId()
       let parsed: unknown
-      try { parsed = JSON.parse(args.refsJson) } catch { return refuse('invalid-refs-json', 'refsJson must be valid JSON', corr) }
+      try { parsed = JSON.parse(args.refsJson) } catch { return Promise.resolve(refuse('invalid-refs-json', 'refsJson must be valid JSON', corr)) }
       if (parsed === null || typeof parsed !== 'object' || Array.isArray(parsed)) {
-        return refuse('invalid-refs', 'refsJson must describe an object', corr)
+        return Promise.resolve(refuse('invalid-refs', 'refsJson must describe an object', corr))
       }
       const refs: Record<string, string> = {}
       for (const [key, value] of Object.entries(parsed)) {
-        if (typeof value !== 'string') return refuse('invalid-refs', 'every ref description must be a string', corr)
+        if (typeof value !== 'string') return Promise.resolve(refuse('invalid-refs', 'every ref description must be a string', corr))
         refs[key] = value
       }
       const captured = snapshots.capture({ runId: args.runId, agentId: args.agentId, refs })
-      return captured.ok ? reply(captured.value) : refuse(captured.error.code, captured.error.message, corr)
+      return Promise.resolve(captured.ok ? reply(captured.value) : refuse(captured.error.code, captured.error.message, corr))
     },
   }))
 
@@ -249,12 +249,12 @@ export function registerTestPilotTools(ctx: Context, services: ToolServices): vo
       format: { type: 'string', enum: ['json', 'junit', 'html', 'markdown'], description: 'Report format; defaults to json.' },
     },
     output: { schema: { type: 'string' }, render: (_args, value) => [{ type: 'text', text: value }] },
-    async execute(args) {
-      const format = (args.format ?? 'json') as ReportFormat
-      const body = await store.getReport(args.runId, format)
-      return body === null
-        ? refuse('report-not-found', `no ${format} report for ${args.runId}; run testpilot_gate_evaluate first`, correlationId())
-        : body
+    execute(args) {
+      const format = args.format ?? 'json'
+      return store.getReport(args.runId, format).then(body =>
+        body === null
+          ? refuse('report-not-found', `no ${format} report for ${args.runId}; run testpilot_gate_evaluate first`, correlationId())
+          : body)
     },
   }))
 
@@ -276,14 +276,14 @@ export function registerTestPilotTools(ctx: Context, services: ToolServices): vo
     description: 'Read counters, derived rates, P95 duration and the exact definition of each metric.',
     parameters: {},
     output: { schema: { type: 'string' }, render: (_args, value) => [{ type: 'text', text: value }] },
-    async execute() {
+    execute() {
       const snapshot = observability.snapshot(now())
-      return reply({
+      return Promise.resolve(reply({
         snapshot,
         rates: deriveRates(snapshot),
         runDurationP95Ms: observability.percentile(95),
         definitions: METRIC_DEFINITIONS,
-      })
+      }))
     },
   }))
 
